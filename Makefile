@@ -15,7 +15,6 @@ submodule:
 
 $(BIN):$(PATCHED)
 	cd dnsmasq && $(MAKE) COPTS=$(DNSMASQ_COPTS)
-	$(MAKE) remove_patched
 
 # disable parallel build for patching files
 # for preventing from producing out of order chunks
@@ -37,4 +36,3 @@ remove_patched:
 .PHONY: clean
 clean:
 	$(MAKE) -C dnsmasq clean
-	$(MAKE) remove_patched
