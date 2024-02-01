@@ -1,0 +1,13 @@
+version: '3'
+services:
+  dnsmasq:
+    container_name: dnsmasq
+    image: registry.us-west-1.aliyuncs.com/labex-dev/dnsmasq:staging
+    restart: always
+    volumes:
+      - ./dnsmasq.conf:/etc/dnsmasq.conf
+    networks:
+      - dns
+networks:
+  dns:
+    external: true
