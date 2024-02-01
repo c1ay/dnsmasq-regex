@@ -6,7 +6,7 @@ COPY . /app
 WORKDIR /app
 
 # 安装依赖
-RUN apt-get update && apt-get install -y libpcre3-dev libnftables-dev pkg-config; \
+RUN apt-get update && apt-get install -y libpcre3-dev libnftables-dev pkg-config git; \
 	bash ./update_submodule.sh; \
 	make; \
 	mv ./dnsmasq/src/dnsmasq /usr/sbin/dnsmasq; \
