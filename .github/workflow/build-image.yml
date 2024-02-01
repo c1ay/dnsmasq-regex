@@ -1,0 +1,23 @@
+name: Build online image
+
+on: workflow_dispatch
+
+concurrency:
+  group: build-${{ github.sha }}
+
+env:
+  REGISTRY: registry.us-west-1.aliyuncs.com/labex-dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Retag and Publish
+        uses: tinact/docker.image-retag@1.0.3
+        with:
+          image_name: dnsmasq
+          image_old_tag: staging
+          image_new_tag: product
+          registry: ${{ env.REGISTRY }}
+          registry_username: ${{ secrets.REGISTRY_USER }}
+          registry_password: ${{ secrets.REGISTRY_PASSWORD }}
